@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            font-size: 20px;
+        }
+        .rect {
+            color: rgb(243, 86, 86);
+            font-weight: bold;
+            transition: .3s;
+            background: linear-gradient(to right,#49258d, #d76d77, #eb9f6d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .rect:hover {
+            color: rgb(62, 126, 62);
+            font-weight: bold;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <pre class="rect"></pre>
+    <script>
+        const rect = document.querySelector('.rect');
+
+            const runClock = () => {
+                const now = new Date();
+                const deadline1 = new Date("2022-08-24 00:00:00");
+
+                const difference = deadline1 - now;
+                const days = parseInt(difference / (24 * 60 * 60 * 1000));
+
+                const leave1 = difference % (24 * 60 * 60 * 1000);
+                const hours = Math.floor(leave1/(60 * 60 * 1000));
+
+                const leave2 = leave1 % (60 * 60 * 1000);
+                const mins = Math.floor(leave2/(60 * 1000));
+
+                const leave3 = leave2 % (60 * 1000);
+                const secs = Math.round(leave3/(1000)); 
+
+                rect.innerHTML = `！！距離放暑假還有 ${days} 天 ${hours} 時 ${mins} 分 ${secs} 秒！！` + "\n";
+
+                console.log(new Date());
+                setTimeout(runClock, 1000);
+            };
+            runClock();
+    </script>
+</body>
+</html>
